@@ -13,6 +13,19 @@ void    print_comb(char *a, char *b, char *c, char *d)
     }
 }
 
+void    ft_check(char *value_a, char *value_b)
+{
+    if (*value_b != '9')
+    {
+        *value_b = *value_b + 1;
+    }
+    else
+    {
+        *value_a = *value_a + 1;
+        *value_b = '0';
+    }
+}
+
 void    ft_print_comb2(void)
 {
     char    a;
@@ -24,34 +37,17 @@ void    ft_print_comb2(void)
     b = '0';
     c = '0';
     d = '0';
+
     while (a != '9' || b != '9')
     {
             while (c != '9' || d != '9')
             {
-                if (d != '9')
-                {
-                    d++;
-                    print_comb(&a,&b,&c,&d);
-                }
-                else
-                {
-                    c++;
-                    d = '0';
-                    print_comb(&a,&b,&c,&d);
-                }
+                ft_check(&c,&d);
+                print_comb(&a,&b,&c,&d);
             }
-        if (b != '9')
-        {
-            b++;
-            print_comb(&a,&b,&c,&d);
-        }
-        else
-        {
-            a++;
-            b = '0';
-            print_comb(&a,&b,&c,&d);
-        }
-    }     
+        ft_check(&a,&b);
+        print_comb(&a,&b,&c,&d);
+    }    
 }
 
 int main(void)
