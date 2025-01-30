@@ -6,14 +6,14 @@
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:11:07 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/01/30 12:11:18 by mdiehl-v         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:05:52 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
+/*#include <stdio.h>*/
 
-char *ft_strncpy(char *dest, char *src, unsigned int n)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	int	i;
 
@@ -23,13 +23,13 @@ char *ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[i] = src[i];
 		i++;
 	}
-    while (n < n)
-    {
-        dest[i] = '\0';
-    }
+	while (n < n)
+	{
+		dest[i] = '\0';
+	}
 	return (dest);
 }
-
+/*
 int	main(void)
 {
 	char	d[10];
@@ -45,4 +45,4 @@ int	main(void)
 	if (d[n] == '\0')
 		write(1, "Ok", 2);
 	return (0);
-}
+}*/

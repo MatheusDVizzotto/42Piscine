@@ -1,45 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 09:20:47 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/01/30 15:04:44 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/01/30 13:19:07 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/01/30 14:10:06 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-/*#include <stdio.h>*/
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_str_is_alpha(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (src[i] != '\0')
+	if (str[0] == '\0')
 	{
-		dest[i] = src[i];
+		return (1);
+	}
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] < 'A' || str[i] > 'Z' && str[i] < 'a' || str[i] > 'z')
+		{
+			return (0);
+		}
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (1);
 }
-
 /*
 int	main(void)
 {
-	char	d[10];
-	char	s[] = "hello";
-	int	i;
+	char test[5];
+	char aswc;
 
-	i = 0;
-	ft_strcpy(d, s);
-	while (d[i] != '\0')
-	{
-		printf("%i",d[i]);
-		i++;
-	}
-	return (0);
+	int asw;
+
+
+	test[0] = 'a';
+	test[1] = 'z';
+	test[2] = 'A';
+	test[3] = 'Z';
+	test[4] = '5';
+
+	asw = ft_str_is_alpha(test);
+	aswc = asw + '0';
+	write(1,&aswc,1);
 }*/
