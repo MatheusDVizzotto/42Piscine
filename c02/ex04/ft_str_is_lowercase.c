@@ -6,13 +6,13 @@
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:25:59 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/01/30 14:42:10 by mdiehl-v         ###   ########.fr       */
+/*   Updated: 2025/01/31 08:43:38 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
+int	ft_str_is_lowercase(char *str)
 {
 	int	i;
 
@@ -47,7 +47,7 @@ int	main(void)
 	test[3] = 'v';
 	test[4] = 'm';
 
-	asw = ft_str_is_alpha(test);
+	asw = ft_str_is_lowercase(test);
 	aswc = asw + '0';
 	write(1,&aswc,1);
 }

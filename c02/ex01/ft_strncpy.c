@@ -6,7 +6,7 @@
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:11:07 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/01/30 15:05:52 by mdiehl-v         ###   ########.fr       */
+/*   Updated: 2025/01/31 08:37:35 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
 	while (i < n && src[i] != '\0')
@@ -23,9 +23,10 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[i] = src[i];
 		i++;
 	}
-	while (n < n)
+	while (i < n)
 	{
 		dest[i] = '\0';
+		i++;
 	}
 	return (dest);
 }

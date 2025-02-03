@@ -1,56 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 13:19:07 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/02/03 10:21:23 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/02 22:35:07 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/03 09:18:51 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	if (str[0] == '\0')
+	while (src[i] != '\0' )
 	{
-		return (1);
-	}
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] < 'A' || str[i] > 'Z')
-		{
-			if (str[i] < 'a' || str[i] > 'z')
-			{
-				return (0);
-			}
-		}
+		if (i < size - 1)
+			dest[i] = src[i];
 		i++;
 	}
-	return (1);
+	dest[i] = '\0';
+	size = i;
+	return (i);
 }
-/*
-int	main(void)
-{
-	char test[5];
-	char aswc;
-
-	int asw;
-
-
-	test[0] = 'a';
-	test[1] = 'z';
-	test[2] = 'A';
-	test[3] = 'Z';
-	test[4] = '5';
-
-	asw = ft_str_is_alpha(test);
-	aswc = asw + '0';
-	write(1,&aswc,1);
-}*/

@@ -1,56 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 13:19:07 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/02/03 10:21:23 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/01/31 09:44:42 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/03 10:25:43 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
+char	*ft_strupcase(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[0] == '\0')
-	{
-		return (1);
-	}
-	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] < 'A' || str[i] > 'Z')
+		if (str[i] >= 'a' && str[i] <= 'z')
 		{
-			if (str[i] < 'a' || str[i] > 'z')
-			{
-				return (0);
-			}
+			str[i] -= 'a' - 'A';
 		}
 		i++;
 	}
-	return (1);
+	return (str);
 }
 /*
 int	main(void)
 {
+	int i;
 	char test[5];
-	char aswc;
+	char *test_a;
 
-	int asw;
+	i = 0;
 
+	test[0] = 's';
+	test[1] = 'd';
+	test[2] = 'f';
+	test[3] = 'c';
+	test[4] = 'w';
 
-	test[0] = 'a';
-	test[1] = 'z';
-	test[2] = 'A';
-	test[3] = 'Z';
-	test[4] = '5';
+	test_a = ft_strupcase(test);
 
-	asw = ft_str_is_alpha(test);
-	aswc = asw + '0';
-	write(1,&aswc,1);
+	while(test_a[i] != '\0')
+	{
+		write(1,&test_a[i],1);
+		i++;
+	}
+	
 }*/

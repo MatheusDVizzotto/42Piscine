@@ -1,56 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 13:19:07 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/02/03 10:21:23 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/02 22:40:07 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/03 09:08:59 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
+void	ft_putstr_non_printable(char *str)
 {
-	int	i;
+	int		i;
+	int		p;
+	char	*hex;
 
-	i = 0;
-	if (str[0] == '\0')
-	{
-		return (1);
-	}
+	hex = "0123456789abcdef";
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] < 'A' || str[i] > 'Z')
+		if (str[i] < 32 || str[i] > 126)
 		{
-			if (str[i] < 'a' || str[i] > 'z')
-			{
-				return (0);
-			}
+			write(1, "\\", 1);
+			p = str[i] / 16;
+			p = hex[p];
+			write(1, &p, 1);
+			p = str[i] % 16;
+			p = hex[p];
+			write(1, &p, 1);
+		}
+		else
+		{
+			write(1, &str[i], 1);
 		}
 		i++;
 	}
-	return (1);
 }
 /*
-int	main(void)
+int main()
 {
-	char test[5];
-	char aswc;
+    char test[] = "Coucou\ntu vas bien ?";
+	int i = 0;
 
-	int asw;
-
-
-	test[0] = 'a';
-	test[1] = 'z';
-	test[2] = 'A';
-	test[3] = 'Z';
-	test[4] = '5';
-
-	asw = ft_str_is_alpha(test);
-	aswc = asw + '0';
-	write(1,&aswc,1);
+	ft_putstr_non_printable(test);
 }*/
