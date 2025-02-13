@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 09:01:13 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/02/05 08:47:33 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/07 11:54:12 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/10 14:08:37 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+int	main(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	int		ai;
+	char	*tl;
 
-	i = 0;
-	while (str[i] != '\0')
+	i = argc - 1;
+	ai = 0;
+	if (argc == 1)
 	{
-		i++;
+		return (0);
 	}
-	return (i);
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	dest_len;
-
-	i = 0;
-	dest_len = ft_strlen(dest);
-	while (src[i] != '\0')
+	while (i >= 1)
 	{
-		dest[dest_len + i] = src[i];
-		i++;
+		tl = argv[i];
+		while (tl[ai] != '\0')
+		{
+			write(1, &tl[ai], 1);
+			ai++;
+		}
+		write(1, "\n", 1);
+		ai = 0;
+		i--;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest);
 }

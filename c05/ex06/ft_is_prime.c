@@ -1,53 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 14:34:41 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/01/30 14:40:29 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/06 13:22:13 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/06 14:37:17 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
+int	ft_is_prime(int nb)
 {
 	int	i;
+	int	prime[4];
 
+	prime[0] = 2;
+	prime[1] = 3;
+	prime[2] = 5;
+	prime[3] = 7;
 	i = 0;
-	if (str[0] == '\0')
+	if (nb < 2)
 	{
-		return (1);
+		return (0);
 	}
-	i = 0;
-	while (str[i] != '\0')
+	while (i < 4)
 	{
-		if (str[i] < 'A' || str[i] > 'Z')
-		{
+		if (nb == prime[i])
+			return (1);
+		if (nb != prime[i] && nb % prime[i] == 0)
 			return (0);
-		}
 		i++;
 	}
 	return (1);
 }
-
-int     main(void)
+/*
+int main()
 {
-        char test[5];
-        char aswc;
-
-        int asw;
-
-
-        test[0] = 'A';
-        test[1] = 'F';
-        test[2] = 'g';
-        test[3] = 'V';
-        test[4] = 'M';
-
-        asw = ft_str_is_alpha(test);
-        aswc = asw + '0';
-        write(1,&aswc,1);
-}
+	ft_is_prime(1);
+}*/

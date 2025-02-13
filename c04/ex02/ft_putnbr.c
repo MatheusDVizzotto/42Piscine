@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 09:01:13 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/02/05 08:47:33 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/05 09:23:57 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/05 09:29:17 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+void	ft_putchar(char c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	write(1, &c, 1);
 }
 
-char	*ft_strcat(char *dest, char *src)
+void	ft_putnbr(int nb)
 {
-	int	i;
-	int	dest_len;
-
-	i = 0;
-	dest_len = ft_strlen(dest);
-	while (src[i] != '\0')
+	if (nb == -2147483648)
 	{
-		dest[dest_len + i] = src[i];
-		i++;
+		ft_putchar('-');
+		ft_putchar('2');
+		nb = 147483648;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest);
+	if (nb < 0)
+	{
+		nb = -nb;
+		ft_putchar('-');
+	}
+	if (nb < 10)
+		ft_putchar(nb + '0');
+	else
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
 }
+/*
+int main(void)
+{
+	ft_putnbr(42);
+}
+*/

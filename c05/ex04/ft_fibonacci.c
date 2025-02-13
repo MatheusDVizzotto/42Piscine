@@ -1,55 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 14:25:59 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/01/30 14:32:35 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/06 11:55:22 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/06 12:26:04 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
+int	ft_fibonacci(int index)
 {
-	int	i;
+	int	result;
 
-	i = 0;
-	if (str[0] == '\0')
-	{
+	result = 0;
+	if (index < 0)
+		return (-1);
+	else if (index == 0)
+		return (0);
+	else if (index == 1)
 		return (1);
-	}
-	i = 0;
-	while (str[i] != '\0')
-	{
-		check = str[i];
-		if (str[i] < 'a' || str[i] > 'z')
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
+	result = ft_fibonacci(index - 1) + ft_fibonacci(index - 2);
+	return (result);
 }
-
-int	main(void)
-{
-	char test[5];
-	char aswc;
-
-	int asw;
-
-
-	test[0] = 'a';
-	test[1] = 'F';
-	test[2] = 'g';
-	test[3] = 'v';
-	test[4] = 'm';
-
-	asw = ft_str_is_alpha(test);
-	aswc = asw + '0';
-	write(1,&aswc,1);
-}
-

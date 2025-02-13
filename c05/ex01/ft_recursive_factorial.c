@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 09:20:47 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/01/30 12:03:44 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/06 11:09:29 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/06 14:29:32 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
+/*#include <stdio.h>*/
 
-char	*ft_strcpy(char *dest, char *src)
+int	ft_recursive_factorial(int nb)
 {
-	int	i;
+	int	result;
 
-	i = 0;
-	while (src[i] != '\0')
+	if (nb == 0)
 	{
-		dest[i] = src[i];
-		i++;
+		return (1);
 	}
-	dest[i] = '\0';
-	return (dest);
+	else if (nb < 0 || nb > 19)
+	{
+		return (0);
+	}
+	result = nb * ft_recursive_factorial(nb - 1);
+	return (result);
 }
-
-int	main(void)
+/*
+int main ()
 {
-	char	d[10];
-	char	s[] = "hello";
-	int	i;
-
-	i = 0;
-	ft_strcpy(d, s);
-	write(1, d, 5);	
-    write(1, "\n", 1);
-	if (d[5] == '\0')
-		write(1, "Ok", 2);
-	return (0);
-}
+	printf("%i",ft_recursive_factorial(12));
+}*/

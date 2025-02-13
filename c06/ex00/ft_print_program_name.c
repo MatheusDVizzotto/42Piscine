@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 09:01:13 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/02/05 08:47:33 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/07 10:12:12 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/10 14:04:14 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+int	main(int argc, char **argv)
 {
-	int	i;
+	int		i;
+	char	*name;
 
+	(void) argc;
 	i = 0;
-	while (str[i] != '\0')
+	name = argv[0];
+	while (name[i] != '\0')
 	{
+		write(1, &name[i], 1);
 		i++;
 	}
-	return (i);
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	dest_len;
-
-	i = 0;
-	dest_len = ft_strlen(dest);
-	while (src[i] != '\0')
-	{
-		dest[dest_len + i] = src[i];
-		i++;
-	}
-	dest[dest_len + i] = '\0';
-	return (dest);
+	write(1, "\n", 1);
 }

@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 09:01:13 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/02/05 08:47:33 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/06 11:21:39 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/06 11:42:08 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+int	ft_iterative_power(int nb, int power)
 {
 	int	i;
+	int	result;
 
 	i = 0;
-	while (str[i] != '\0')
+	result = 1;
+	if (power < 0)
 	{
+		return (0);
+	}
+	else if (power == 0)
+	{
+		return (1);
+	}
+	while (i < power)
+	{
+		result *= nb;
 		i++;
 	}
-	return (i);
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	dest_len;
-
-	i = 0;
-	dest_len = ft_strlen(dest);
-	while (src[i] != '\0')
-	{
-		dest[dest_len + i] = src[i];
-		i++;
-	}
-	dest[dest_len + i] = '\0';
-	return (dest);
+	return (result);
 }

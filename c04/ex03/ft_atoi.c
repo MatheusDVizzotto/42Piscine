@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdiehl-v <mdiehl-v@student.42adel.org      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/04 09:01:13 by mdiehl-v          #+#    #+#             */
-/*   Updated: 2025/02/05 08:47:33 by mdiehl-v         ###   ########.fr       */
+/*   Created: 2025/02/05 09:40:16 by mdiehl-v          #+#    #+#             */
+/*   Updated: 2025/02/05 12:08:29 by mdiehl-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+int	ft_atoi(char *str)
 {
+	int	result;
+	int	sign;
 	int	i;
 
+	result = 0;
+	sign = 1;
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i] == ' ')
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
+		if (str[i] == '-')
+			sign = (sign * -1);
 		i++;
 	}
-	return (i);
-}
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	dest_len;
-
-	i = 0;
-	dest_len = ft_strlen(dest);
-	while (src[i] != '\0')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		dest[dest_len + i] = src[i];
+		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
-	dest[dest_len + i] = '\0';
-	return (dest);
+	return (result * sign);
 }
