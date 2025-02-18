@@ -1,4 +1,6 @@
 #include <unistd.h>
+#include <limits.h>
+#include <stdio.h>
 
 void    ft_putchar(char c)
 {
@@ -7,14 +9,20 @@ void    ft_putchar(char c)
 
 void    ft_putnbr(int nb)
 {
-    if (nb < 0)
+    if (nb == INT_MIN)
+    {
+        write(1, "-", 1);
+        ft_putnbr(-(nb / 10));
+        ft_putnbr(-(nb % 10));
+    }
+    if (nb < 0 && nb != INT_MIN)
     {
         nb = -nb;
         ft_putchar('-');
     }
-    if (nb < 10)
+    if (nb < 10 && nb != INT_MIN)
         ft_putchar(nb + '0');
-    else
+    else if (nb > 10)
     {
         ft_putnbr(nb / 10);
         ft_putnbr(nb % 10);
@@ -23,5 +31,5 @@ void    ft_putnbr(int nb)
 
 int main(void)
 {
-    ft_putnbr(42);
+    ft_putnbr(-2147483648);
 }

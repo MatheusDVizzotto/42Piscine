@@ -26,29 +26,27 @@ char	*ft_strcapitalize(char *str)
 		{
 			if (str[i] >= 'a' && str[i] <= 'z')
 			{
-				if (str[i - 1] == ' ' || str[i - 1] == '-' || str[i - 1] == '+')
+				if (!(str[i - 1] >= 'a' && str[i - 1] <= 'z') && !(str[i - 1] >= 'A' && str[i - 1] <= 'Z') && !(str[i - 1] >= '0' && str[i - 1] <= '9'))
 					str[i] -= 'a' - 'A';
 			}
 		}
 		i++;
 	}
+	str[i] = '\0';
 	return (str);
 }
-/*
+
 int main()
 {
-	char test[] = "HELLO test";
+	char test[] = "oi, tudo bem? 42palavras quarenta-e-duas; cinquenta+e+um";
 	int i = 0;
 	int test2;
 
 	ft_strcapitalize(test);
 
-	test2 = sizeof(test);
-
-	while (i < test2)
+	while (test[i] != '\0')
 	{
 		write(1,&test[i],1);
 		i++;
 	}
 }
-*/
